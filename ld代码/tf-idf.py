@@ -16,7 +16,7 @@ def termf(dic):
        s+=dic[i]
     tf={}
     for i in dic:
-        tf[i]=dic[i]*500/s#频率值太小，因此乘1000  1000生成的数量不够多 改为3000
+        tf[i]=dic[i]*500/s#频率值太小，因此乘500，1000太大，300太小，但实际上都存在严重的重复问题，也就是说tf-idf筛选能力很弱
     return tf
 
 def inversedf(dic,sum_all):
