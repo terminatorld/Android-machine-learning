@@ -1,0 +1,70 @@
+['Lcom/facebook/LoginActivity;-><clinit>()V', 'Ljava/lang/Class;->getName()Ljava/lang/String']
+:107
+['Lcom/facebook/LoginActivity;-><init>()V', 'Landroid/app/Activity;-><init>()']
+:125
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Landroid/os/Bundle;-><init>()']
+:118
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)']
+:118
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Landroid/content/Intent;-><init>()']
+:118
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent']
+:118
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Lcom/facebook/LoginActivity;->setResult(ILandroid/content/Intent;)']
+:118
+['Lcom/facebook/LoginActivity;->onAuthClientCompleted(Lcom/facebook/AuthorizationClient$Result;)V', 'Lcom/facebook/LoginActivity;->finish()']
+:118
+['Lcom/facebook/LoginActivity;->populateIntentExtras(Lcom/facebook/AuthorizationClient$AuthorizationRequest;)Landroid/os/Bundle;', 'Landroid/os/Bundle;-><init>()']
+:119
+['Lcom/facebook/LoginActivity;->populateIntentExtras(Lcom/facebook/AuthorizationClient$AuthorizationRequest;)Landroid/os/Bundle;', 'Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)']
+:119
+['Lcom/facebook/LoginActivity;->onActivityResult(IILandroid/content/Intent;)V', 'Lcom/facebook/AuthorizationClient;->onActivityResult(IILandroid/content/Intent;)']
+:118
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/LoginActivity;->setContentView(I)']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Landroid/os/Bundle;->getSerializable(Ljava/lang/String;)Ljava/io/Serializable']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/AuthorizationClient;->setContext(Landroid/app/Activity;)']
+:117
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/LoginActivity$1;-><init>(Lcom/facebook/LoginActivity;)']
+:119
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/AuthorizationClient;->setOnCompletedListener(Lcom/facebook/AuthorizationClient$OnCompletedListener;)']
+:117
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/LoginActivity$2;-><init>(Lcom/facebook/LoginActivity;)']
+:119
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/AuthorizationClient;->setBackgroundProcessingListener(Lcom/facebook/AuthorizationClient$BackgroundProcessingListener;)']
+:117
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/LoginActivity;->getCallingPackage()Ljava/lang/String']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/AuthorizationClient;-><init>()']
+:119
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Lcom/facebook/LoginActivity;->getIntent()Landroid/content/Intent']
+:123
+['Lcom/facebook/LoginActivity;->onCreate(Landroid/os/Bundle;)V', 'Landroid/content/Intent;->getSerializableExtra(Ljava/lang/String;)Ljava/io/Serializable']
+:123
+['Lcom/facebook/LoginActivity;->onPause()V', 'Landroid/app/Activity;->onPause()']
+:125
+['Lcom/facebook/LoginActivity;->onPause()V', 'Lcom/facebook/AuthorizationClient;->cancelCurrentHandler()']
+:118
+['Lcom/facebook/LoginActivity;->onPause()V', 'Lcom/facebook/LoginActivity;->findViewById(I)Landroid/view/View']
+:124
+['Lcom/facebook/LoginActivity;->onPause()V', 'Landroid/view/View;->setVisibility(I)']
+:124
+['Lcom/facebook/LoginActivity;->onResume()V', 'Landroid/app/Activity;->onResume()']
+:124
+['Lcom/facebook/LoginActivity;->onResume()V', 'Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)']
+:105
+['Lcom/facebook/LoginActivity;->onResume()V', 'Lcom/facebook/LoginActivity;->finish()']
+:106
+['Lcom/facebook/LoginActivity;->onResume()V', 'Lcom/facebook/AuthorizationClient;->startOrContinueAuth(Lcom/facebook/AuthorizationClient$AuthorizationRequest;)']
+:118
+['Lcom/facebook/LoginActivity;->onSaveInstanceState(Landroid/os/Bundle;)V', 'Landroid/app/Activity;->onSaveInstanceState(Landroid/os/Bundle;)']
+:124
+['Lcom/facebook/LoginActivity;->onSaveInstanceState(Landroid/os/Bundle;)V', 'Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)']
+:124
+['Lcom/facebook/LoginActivity;->onSaveInstanceState(Landroid/os/Bundle;)V', 'Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)']
+:124
