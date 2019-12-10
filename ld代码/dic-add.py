@@ -7,7 +7,7 @@ Created on Wed Nov 06 16:56:02 2019
 
 import json
 
-def dic_add(path1,path2):
+def dic_add(path1,path2):#因为weather文件夹不在服务器上，所以要把weather类的内容加到总数中
     with open(path1,'r')as r:
         dic1=json.load(r)
     with open(path2,'r')as r:

@@ -37,5 +37,5 @@ for i in range(len(funcs)):
 for i in api_num_f_editon:
     if api_num_f_editon[i]>50:#只有至少在50个apk中出现过，才会被保留
         api_num[i]=api_num_f_editon[i]
-with open('C:\\Users\\yhm\\Desktop\\class\\classtodownload\\api-apk.json','w')as w:
+with open('C:\\Users\\yhm\\Desktop\\class\\classtodownload\\api-apk.json','w')as w:#api-apk.json保存每个api在多少个apk中出现，所有类别
     json.dump(api_num,w)
