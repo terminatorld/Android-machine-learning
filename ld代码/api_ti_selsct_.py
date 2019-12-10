@@ -4,7 +4,7 @@ Created on Thu Nov 07 17:10:30 2019
 
 @author: liudong
 """
-#筛选api，但是数量太少
+#筛选api，看有多少api最终被各个类别筛选出来
 import os
 import json
 path=unicode('C:\Users\yhm\Desktop\ld代码','utf-8')
