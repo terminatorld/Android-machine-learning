@@ -39,7 +39,6 @@ sum_all=sum_apk()#apk总数
 with open(os.path.join(path,'api-apk-all.json'),'r')as r:
     t_all=json.load(r)
 t_idf=inversedf(t_all,sum_all)#每一个api的idf
-
 #求每一个类别中每一个api的tf值
 for f in os.listdir(path):
     if f.startswith('api_'):
@@ -54,6 +53,6 @@ for f in os.listdir(path):
         for i in tf_idf:
             if tf_idf[i]!=0:
                 res[i]=tf_idf[i]
-        with open('C:\Users\yhm\Desktop\class\classtodownload'+'\\'+f.rsplit('_',1)[1].split('.')[0]+'-'+str(len(res))+'-ti.json','w')as w:
-            json.dump(res,w)
-           
+        with open('C:\Users\yhm\Desktop\class\classtodownload'+'\\'+re.split('(\d+_)',f)[2].split('.')[0]+'-'+str(len(res))+'-ti.json','w')as w:
+            #re.split('(\d+_)',f)[2]中使用数字_把类别名提取出来
+            json.dump(res,w) 
