@@ -36,7 +36,9 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
                         for line in r.readlines():#如果在当前调用关系中找到了被筛选出来的api，就将该调用关系添加到记录列表all_call中
                             l1=re.findall(r'\'(\S+)\'',line)
                             if l1[0]+'\n' in ini_api.keys() or l1[1]+'\n' in ini_api.keys():
-                                all_call.append(str(l1))
+                                #如果调用关系中有被筛选出来的api，则保存这条调用关系
+                                #这样的方法导致86个api拓展出了25万条链接关系（不包含weather），因此需要对关系进行筛选和限制
+                                all_call.append(str(l1))#之所以存为string，是因为去重操作中，list转set不允许list[list]转set
                     
 path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf=500','utf-8')
 api_ti=[]
@@ -44,7 +46,7 @@ all_api_call=[]
 api_ti_statistic(path,api_ti)
 api_call_statistic(path,all_api_call)
 print(len(api_ti))
-res=list(set(all_api_call))
+res=list(set(all_api_call))#存为string的原因
 with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:
         for c in res:
             w.write(c+'\n')
