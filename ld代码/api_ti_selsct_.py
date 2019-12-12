@@ -36,15 +36,16 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
                         for line in r.readlines():#如果在当前调用关系中找到了被筛选出来的api，就将该调用关系添加到记录列表all_call中
                             l1=re.findall(r'\'(\S+)\'',line)
                             if l1[0]+'\n' in ini_api.keys() or l1[1]+'\n' in ini_api.keys():
-                                all_call.append(l1)                                  
-    with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:
-        for c in all_api_call:
-            w.write(str(c))
+                                all_call.append(str(l1))
                     
-path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf=700','utf-8')
+path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf=500','utf-8')
 api_ti=[]
 all_api_call=[]
 api_ti_statistic(path,api_ti)
 api_call_statistic(path,all_api_call)
 print(len(api_ti))
-print(len(all_api_call))                         
+res=list(set(all_api_call))
+with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:
+        for c in res:
+            w.write(c+'\n')
+print(len(res))                             
