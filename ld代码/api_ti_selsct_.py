@@ -25,6 +25,8 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
     for f in os.listdir(path):
         with open(os.path.join(path,f),'r')as r:
             ini_api=json.load(r)
+        for v in ini_api.values():
+            v=0
         k=f.split('-')[0]#读取类别名
         if k =='WEATHER':
             continue
@@ -35,19 +37,30 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
                     with io.open(os.path.join('C:\Users\yhm\Desktop\class\classtodownload',k,ff,'api_call.txt'),'r',encoding='utf-8')as r:
                         for line in r.readlines():#如果在当前调用关系中找到了被筛选出来的api，就将该调用关系添加到记录列表all_call中
                             l1=re.findall(r'\'(\S+)\'',line)
-                            if l1[0]+'\n' in ini_api.keys() or l1[1]+'\n' in ini_api.keys():
+                            if l1[0]+'\n' in ini_api.keys() and ini_api[l1[0]+'\n']<100:
+                                ini_api[l1[0]+'\n']+=1
                                 #如果调用关系中有被筛选出来的api，则保存这条调用关系
-                                #这样的方法导致86个api拓展出了25万条链接关系（不包含weather），因此需要对关系进行筛选和限制
+                                #这样的方法导致87个api拓展出了25万条链接关系（不包含weather），因此需要对关系进行筛选和限制
                                 all_call.append(str(l1))#之所以存为string，是因为去重操作中，list转set不允许list[list]转set
+                            elif l1[1]+'\n' in ini_api.keys() and ini_api[l1[1]+'\n']<100:
+                                ini_api[l1[1]+'\n']+=1
+                                all_call.append(str(l1))
                     
 path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf=500','utf-8')
-api_ti=[]
-all_api_call=[]
+api_ti=[]#tf-idf筛选出来的api
+api_add=set()#拓展之后的api集合，set用于去重
+all_api_call=[]#所有api的调用关系，存在大量重复，使用的是string存储
 api_ti_statistic(path,api_ti)
 api_call_statistic(path,all_api_call)
-print(len(api_ti))
-res=list(set(all_api_call))#存为string的原因
-with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:
+res=list(set(all_api_call))#存为string的原因；对all_api_call[]去重，保留去重结果
+for c in res:
+    l2=re.findall(r'\'(\S+)\'',c)
+    if not l2[0] in api_add:
+        api_add.add(l2[0])
+    if not l2[1] in api_add:
+        api_add.add(l2[1])
+print(len(api_add))#统计集合中一共有多少api
+with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:#将去重之后的链接关系存入txt
         for c in res:
             w.write(c+'\n')
-print(len(res))                             
+print(len(res))#统计集合中有多少链接
