@@ -37,12 +37,12 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
                     with io.open(os.path.join('C:\Users\yhm\Desktop\class\classtodownload',k,ff,'api_call.txt'),'r',encoding='utf-8')as r:
                         for line in r.readlines():#如果在当前调用关系中找到了被筛选出来的api，就将该调用关系添加到记录列表all_call中
                             l1=re.findall(r'\'(\S+)\'',line)
-                            if l1[0]+'\n' in ini_api.keys() and ini_api[l1[0]+'\n']<100:
+                            if l1[0]+'\n' in ini_api.keys() and ini_api[l1[0]+'\n']<30:#限定最大链接数，不然最后api数量过多
                                 ini_api[l1[0]+'\n']+=1
                                 #如果调用关系中有被筛选出来的api，则保存这条调用关系
                                 #这样的方法导致87个api拓展出了25万条链接关系（不包含weather），因此需要对关系进行筛选和限制
                                 all_call.append(str(l1))#之所以存为string，是因为去重操作中，list转set不允许list[list]转set
-                            elif l1[1]+'\n' in ini_api.keys() and ini_api[l1[1]+'\n']<100:
+                            elif l1[1]+'\n' in ini_api.keys() and ini_api[l1[1]+'\n']<30:
                                 ini_api[l1[1]+'\n']+=1
                                 all_call.append(str(l1))
                     
@@ -59,8 +59,11 @@ for c in res:
         api_add.add(l2[0])
     if not l2[1] in api_add:
         api_add.add(l2[1])
-print(len(api_add))#统计集合中一共有多少api
+with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_ti_select.txt','utf-8'),'w')as w:#将筛选去重之后的api存入txt
+        for a in api_add:
+            w.write(a+'\n')        
+print('There are '+str(len(api_add))+' apis.')#统计集合中一共有多少api
 with open(unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8'),'w')as w:#将去重之后的链接关系存入txt
         for c in res:
             w.write(c+'\n')
-print(len(res))#统计集合中有多少链接
+print('There are '+str(len(res))+' links.')#统计集合中有多少链接,存储在all_api_call.txt中
