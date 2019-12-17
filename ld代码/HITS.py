@@ -26,8 +26,8 @@ def lmatrix(apipath,linkpath,apis,links):#将链接关系转换为二维矩阵
         l_m[row][column]=1
     return l_m
 
-#进行hits迭代，（链接关系矩阵、最大迭代轮数、迭代限制参数）
-def hits(matrix,max_iterations,in_delta):
+#进行hits迭代，（链接关系矩阵、最大迭代轮数、迭代限制参数,authority最高的top_k个api）
+def hits(matrix,max_iterations,in_delta,top_k):
     flag=False#标记迭代是否结束
     hub=np.ones(np.shape(matrix)[0])#list用于存储每个api的hub值
     authority=np.ones(np.shape(matrix)[0])#list用于存储每个api的authority值
@@ -67,7 +67,7 @@ def hits(matrix,max_iterations,in_delta):
         print('共计经过{}轮迭代'.format(k))
     else:
         print('共计经过{}轮迭代'.format(max_iterations))
-    outcome=np.argwhere(authority==max(authority))
+    outcome=authority.argsort()[::-1][0:top_k]#返回authority中值最大的前n个api
     return outcome
 
 if __name__ == '__main__':
@@ -77,5 +77,5 @@ if __name__ == '__main__':
     links=[]
     apipath=unicode('C:\Users\yhm\Desktop\ld代码\\all_api_ti_select.txt','utf-8')
     linkpath=unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8')
-    
-    print(apis[hits(lmatrix(apipath,linkpath,apis,links),50,0.0001)[0][0]])#共计经过6轮迭代 [[1357]]
+    for i in hits(lmatrix(apipath,linkpath,apis,links),50,0.0001,10):
+        print(apis[i])
