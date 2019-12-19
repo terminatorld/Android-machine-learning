@@ -7,6 +7,8 @@ Created on Sun Dec 15 15:28:29 2019
 import numpy as np
 import re
 from math import sqrt
+import json
+import collections
 #将链接关系存为0-1矩阵
 #为每个api赋初值
 #进行hits迭代
@@ -68,14 +70,22 @@ def hits(matrix,max_iterations,in_delta,top_k):
     else:
         print('共计经过{}轮迭代'.format(max_iterations))
     outcome=authority.argsort()[::-1][0:top_k]#返回authority中值最大的前n个api
-    return outcome
+    top={}#用于存储authority最大api的位置和authority值
+    top=collections.OrderedDict()#将无序字典变为有序字典
+    for i in outcome:
+        top[i]=authority[i]
+    return top
 
 if __name__ == '__main__':
     #apis=[]存储api
     #links=[]存储链接关系
     apis=[]
     links=[]
+    api_selsct={}
+    api_selsct=collections.OrderedDict()#将无序字典变为有序字典
     apipath=unicode('C:\Users\yhm\Desktop\ld代码\\all_api_ti_select.txt','utf-8')
     linkpath=unicode('C:\Users\yhm\Desktop\ld代码\\all_api_call.txt','utf-8')
-    for i in hits(lmatrix(apipath,linkpath,apis,links),50,0.0001,10):
-        print(apis[i])
+    for key,value in hits(lmatrix(apipath,linkpath,apis,links),50,0.0001,500).items():
+        api_selsct[apis[key]]=value
+    with open(unicode('C:\Users\yhm\Desktop\ld代码\\api_hits_select.txt','utf-8'),'w')as w: 
+        json.dump(api_selsct,w)

@@ -46,7 +46,7 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
                                 ini_api[l1[1]+'\n']+=1
                                 all_call.append(str(l1))
                     
-path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf=500','utf-8')
+path=unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf','utf-8')
 api_ti=[]#tf-idf筛选出来的api
 api_add=set()#拓展之后的api集合，set用于去重
 all_api_call=[]#所有api的调用关系，存在大量重复，使用的是string存储

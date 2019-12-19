@@ -10,13 +10,14 @@ import json
 import re
 import math
 
-def termf(dic):
-    s=0
+def termf(dic):#tf=该类别包含当前api的apk数/该类别总的apk数
+    pat=re.compile(r'\d+')
+    s=int(pat.findall(f)[0])
     for i in dic:
        s+=dic[i]
     tf={}
     for i in dic:
-        tf[i]=dic[i]*700/s#频率值太小，因此乘500，1000太大，300太小，但实际上都存在严重的重复问题，也就是说tf-idf筛选能力很弱
+        tf[i]=dic[i]/s
     return tf
 
 def inversedf(dic,sum_all):
@@ -55,4 +56,4 @@ for f in os.listdir(path):
                 res[i]=tf_idf[i]
         with open('C:\Users\yhm\Desktop\class\classtodownload'+'\\'+re.split('(\d+_)',f)[2].split('.')[0]+'-'+str(len(res))+'-ti.json','w')as w:
             #re.split('(\d+_)',f)[2]中使用数字_把类别名提取出来
-            json.dump(res,w) 
+            json.dump(res,w)       
