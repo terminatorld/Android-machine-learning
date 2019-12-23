@@ -6,12 +6,13 @@ Created on Tue Nov 05 16:51:52 2019
 """
 import json
 import os
+import io
 
 def api_apk(dic,path):#用于tf-idf初步筛选api的统计信息，统计每一个api在多少apk中出现。path中要包含类名
     for f in os.listdir(path):
         if os.path.isdir(os.path.join(path,f)) and os.path.exists(os.path.join(path,f,'smali_parse.txt')):
             flag={}#每个api在每个apk中只统计一次，该字典用于统计标记
-            with open(os.path.join(path,f,'smali_parse.txt'),'r',encoding='utf-8') as r:
+            with io.open(os.path.join(path,f,'smali_parse.txt'),'r',encoding='utf-8') as r:
                 for line in r.readlines():
                     if line in flag.keys():
                         continue

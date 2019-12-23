@@ -12,9 +12,7 @@ import math
 
 def termf(dic):#tf=该类别包含当前api的apk数/该类别总的apk数
     pat=re.compile(r'\d+')
-    s=int(pat.findall(f)[0])
-    for i in dic:
-       s+=dic[i]
+    s=float(pat.findall(f)[0])
     tf={}
     for i in dic:
         tf[i]=dic[i]/s
@@ -30,7 +28,7 @@ def sum_apk():
     sum_all=0
     pat=re.compile(r'\d+')
     for f in os.listdir('C:\Users\yhm\Desktop\class\classtodownload'):
-        if f.startswith('api_'):
+        if f.startswith('api_') :
             n=int(pat.findall(f)[0])
             sum_all+=n
     return sum_all
@@ -51,9 +49,13 @@ for f in os.listdir(path):
             if i in t_idf.keys():
                 tf_idf[i]=t_tf[i]*t_idf[i]
         res={}
-        for i in tf_idf:
-            if tf_idf[i]!=0:
-                res[i]=tf_idf[i]
-        with open('C:\Users\yhm\Desktop\class\classtodownload'+'\\'+re.split('(\d+_)',f)[2].split('.')[0]+'-'+str(len(res))+'-ti.json','w')as w:
+        i=0
+        for k in sorted(tf_idf.items(), key=lambda item:item[1],reverse=True):#对每个类别的tf-idf进行排序取前25个
+            if i>=25:
+                break
+            res[k[0]]=tf_idf[k[0]]
+            i+=1
+        
+        with open(unicode('C:\Users\yhm\Desktop\ld代码\\tf-idf','utf-8')+'\\'+re.split('(\d+_)',f)[2].split('.')[0]+'-'+str(len(res))+'-ti.json','w')as w:
             #re.split('(\d+_)',f)[2]中使用数字_把类别名提取出来
             json.dump(res,w)       
