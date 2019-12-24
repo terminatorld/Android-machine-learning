@@ -19,6 +19,8 @@ def api_ti_statistic(path,outcome):#统计tf-idf最终筛选了多少不同的ap
             for i in api_f:
                 if i not in outcome:
                     outcome.append(i)
+    with open(unicode('C:\Users\yhm\Desktop\ld代码\\api_ti_sum.txt','utf-8'),'w')as w: 
+        json.dump(outcome,w)
                     
 def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits算法
     #去读取每个类别选出来的初始api集合
