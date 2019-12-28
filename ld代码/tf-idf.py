@@ -51,7 +51,7 @@ for f in os.listdir(path):
         res={}
         i=0
         for k in sorted(tf_idf.items(), key=lambda item:item[1],reverse=True):#对每个类别的tf-idf进行排序取前25个
-            if i>=25:
+            if i>=100:
                 break
             res[k[0]]=tf_idf[k[0]]
             i+=1

@@ -27,8 +27,8 @@ def api_call_statistic(path,all_call):#进行api集合拓展，用于后续hits�
     for f in os.listdir(path):
         with open(os.path.join(path,f),'r')as r:
             ini_api=json.load(r)
-        for v in ini_api.values():
-            v=0
+        for k in ini_api.keys():#将字典值变为0
+            ini_api[k]=0
         k=f.split('-')[0]#读取类别名
         if k =='WEATHER':
             continue

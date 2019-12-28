@@ -12,7 +12,7 @@ import json
 def data(orderdic,path,c):#为每个类别的apk生成向量
     for f in os.listdir(os.path.join(path,c)):
         if os.path.isdir(os.path.join(path,c,f)) :
-            vector=np.zeros(500)#初步设定500维
+            vector=np.zeros(1000)#初步设定500维
             if os.path.exists(os.path.join(path,c,f,'smali_parse.txt')):
                 with open(os.path.join(path,c,f,'smali_parse.txt'),'r')as r:
                     for line in r.readlines():
@@ -22,7 +22,7 @@ def data(orderdic,path,c):#为每个类别的apk生成向量
                 
 path='C:\\Users\\yhm\\Desktop\\class\\classtodownload'
 api500=[]
-with open(unicode('C:\Users\yhm\Desktop\ld代码\\api_500.txt','utf-8'),'r')as r: 
+with open(unicode('C:\Users\yhm\Desktop\ld代码\\api_1000.txt','utf-8'),'r')as r: 
     api500=json.load(r)#获取之前生成的字典，里面保存的是hits筛选出来的api
 for c in os.listdir(path):
     if os.path.isdir(os.path.join(path,c)) and c!='.ipynb_checkpoints' and c!='WEATHER':
